@@ -1,8 +1,6 @@
-import discord
 import numpy as np
-from matplotlib import pyplot
 import cv2
-import os
+
 
 class SharpenerBlur:
     def __init__(self):
