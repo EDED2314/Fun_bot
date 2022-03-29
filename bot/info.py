@@ -35,7 +35,7 @@ class Info(commands.Cog):
         self.embed = disnake.Embed(title="**Help**", description=description, colour=disnake.Colour.random())
         self.b = 1
         self.message = None
-        self.embed = disnake.Embed(title="**Nothing to snipe （＞人＜；）**")
+        self.embedd = disnake.Embed(title="**Nothing to snipe （＞人＜；）**")
 
     @commands.command(name="help")
     async def helpp(self, ctx: commands.Context):
@@ -128,11 +128,11 @@ class Info(commands.Cog):
         now = datetime.datetime.now()
         current_time = now.strftime("%H:%M:%S")
         embed.set_footer(text=f"Today at {current_time}")
-        self.embed = embed
+        self.embedd = embed
 
     @commands.command()
     async def snipe(self, ctx):
-        await ctx.send(embed=self.embed)
+        await ctx.send(embed=self.embedd)
 
 
 # ----------------------------------------------------
