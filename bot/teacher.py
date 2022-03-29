@@ -1,6 +1,6 @@
 import glob, os
-import discord
-from discord.ext import commands
+import disnake
+from disnake.ext import commands
 import random
 import requests
 
@@ -14,7 +14,7 @@ class Lee(commands.Cog):
         self.oldpwd = os.getcwd()
         if mode == "pic":
             x = random.choice(self.check_numbers(mode="list"))
-            await ctx.send(file=discord.File(f'daniel_pics/lee{x}.png'))
+            await ctx.send(file=disnake.File(f'daniel_pics/lee{x}.png'))
         if mode == "test":
             await ctx.send("30%")
     '''
@@ -74,6 +74,6 @@ class Lee(commands.Cog):
         self.oldpwd = os.getcwd()
         if mode == "pic":
             x = random.choice(self.check_numbers(mode="list", folder="flug_pics"))
-            await ctx.send(file=discord.File(f'flug_pics/flug{x}.png'))
+            await ctx.send(file=disnake.File(f'flug_pics/flug{x}.png'))
 
 # ----------------------------------------------------

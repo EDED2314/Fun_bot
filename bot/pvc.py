@@ -1,6 +1,5 @@
-import discord
-from discord.ext import commands
-from discord_components import ActionRow, Button, ButtonStyle, DiscordComponents
+import disnake
+from disnake.ext import commands
 import asyncio
 
 # noinspection PyTypeChecker
@@ -37,16 +36,16 @@ class PrivateVC(commands.Cog):
 
     @staticmethod
     async def buttons(number: int):
-        return Button(label=f"{number}", style=ButtonStyle.grey, custom_id=str(number))
+        return disnake.ui.Button(label=f"{number}", style=disnake.ButtonStyle.grey, custom_id=str(number))
 
     @commands.command()
     async def pvc(self, ctx):
         self.current_channel = ctx.channel
         await ctx.message.delete()
         self.ctxx = ctx
-        embed = discord.Embed(title="**Choose the amount of people!**", colour=discord.Colour.dark_gray())
+        embed = disnake.Embed(title="**Choose the amount of people!**", colour=disnake.Colour.dark_gray())
         components = [
-            ActionRow(await self.buttons(1), await self.buttons(2), await self.buttons(3), await self.buttons(4))]
+            disnake.ui.ActionRow(await self.buttons(1), await self.buttons(2), await self.buttons(3), await self.buttons(4))]
         await ctx.send(embed=embed, components=components)
         await asyncio.sleep(100)
         pvc_role = ctx.guild.get_role(909228794815066152)
@@ -98,19 +97,19 @@ class PrivateVC(commands.Cog):
                     return
                 else:
                     name = msg.content
-                    pvcs = discord.utils.get(self.ctxx.guild.roles, name="pvc")
+                    pvcs = disnake.utils.get(self.ctxx.guild.roles, name="pvc")
 
-                    vc_cat = discord.utils.get(self.ctxx.guild.categories, id=848238227583926281)
+                    vc_cat = disnake.utils.get(self.ctxx.guild.categories, id=848238227583926281)
                     pvc = await vc_cat.create_voice_channel(name=name)
                     self.pvc_list.append(pvc)
 
-                    people = discord.utils.get(self.ctxx.guild.roles, id=848238731768234034)
+                    people = disnake.utils.get(self.ctxx.guild.roles, id=848238731768234034)
                     await pvc.set_permissions(people, view_channel=False)
 
-                    mods = discord.utils.get(self.ctxx.guild.roles, id=848242774868099103)
+                    mods = disnake.utils.get(self.ctxx.guild.roles, id=848242774868099103)
                     await pvc.set_permissions(mods, view_channel=True)
 
-                    bots = discord.utils.get(self.ctxx.guild.roles, id=848246926155448350)
+                    bots = disnake.utils.get(self.ctxx.guild.roles, id=848246926155448350)
                     await pvc.set_permissions(bots, view_channel=True)
 
                     await msg.author.add_roles(pvcs)

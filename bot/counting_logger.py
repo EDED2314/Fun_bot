@@ -1,8 +1,6 @@
-import discord
-from discord.ext import commands
+from disnake.ext import commands
+import disnake
 import csv
-from discord_components import Select, SelectOption
-import os
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -26,8 +24,7 @@ class Counting(commands.Cog):
         self.do_not_do = False
 
     async def sending(self, ctx, message=" "):
-        embed = discord.Embed(title=f"**Who-messed-up-in-counting logger**{message}",
-                              desciprtion="Please enter below which channel is your counting channel")
+        embed = disnake.Embed(title=f"**Who-messed-up-in-counting logger**{message}", description="Please enter below which channel is your counting channel")
         text_channels = []
         text_channels_1 = []
         text_channels_2 = []
@@ -86,7 +83,7 @@ class Counting(commands.Cog):
 
         for i in range(self.current_channel_list):
             components = [
-                Select(
+                disnake.ui.Select(
                     placeholder="Select the according counting channel!",
                     options=text_channels[i]
                     , custom_id=f"Select_{self.num}")
@@ -102,7 +99,7 @@ class Counting(commands.Cog):
         interaction = await self.bot.wait_for(
             "select_option"
         )
-        channel = discord.utils.get(ctx.guild.text_channels, id=int(interaction.values[0]))
+        channel = disnake.utils.get(ctx.guild.text_channels, id=int(interaction.values[0]))
         await interaction.edit_origin(content=f"{channel.name} selected!")
 
         return [channel, interaction]
@@ -131,7 +128,7 @@ class Counting(commands.Cog):
                 item = str(item)
                 item = item.split("&&&&&&&&")
                 self.current_server = item[0]
-                self.current_channel = discord.utils.get(ctx.guild.text_channels, id=int(item[1]))
+                self.current_channel = disnake.utils.get(ctx.guild.text_channels, id=int(item[1]))
                 print(self.current_channel)
                 done = False
                 if self.current_channel is not None:
@@ -198,13 +195,13 @@ class Counting(commands.Cog):
             f.writelines(self.lines)
 
     @staticmethod
-    def convert_to_selectoption(channel: discord.TextChannel):
+    def convert_to_selectoption(channel: disnake.TextChannel):
         label = channel.name
         value = channel.id
-        return SelectOption(label=label, value=str(value))
+        return disnake.SelectOption(label=label, value=str(value))
 
     @commands.Cog.listener()
-    async def on_message(self, message: discord.Message):
+    async def on_message(self, message: disnake.Message):
         if message.author == self.bot.user:
             return
         try:
@@ -215,7 +212,7 @@ class Counting(commands.Cog):
                     item = str(item)
                     item = item.split("&&&&&&&&")
                     self.current_server = item[0]
-                    self.current_channel = discord.utils.get(message.guild.text_channels, id=int(item[1]))
+                    self.current_channel = disnake.utils.get(message.guild.text_channels, id=int(item[1]))
                     if message.channel == self.current_channel:
                         if message.author.id == 510016054391734273 and "RUINED IT AT" in message.content:
                             messages = await message.channel.history(limit=3).flatten()
@@ -269,8 +266,8 @@ class Counting(commands.Cog):
         ax.bar(data["member"], data["errors"], width=0.5, edgecolor="black", linewidth=0.7)
         plt.setp(ax.get_xticklabels(), rotation=30, horizontalalignment='right', fontsize='x-small')
         plt.savefig('errors_for_counting.png')
-        embed = discord.Embed(title="**People who got it wrong**")
-        await ctx.send(embed=embed, file=discord.File('errors_for_counting.png'))
+        embed = disnake.Embed(title="**People who got it wrong**")
+        await ctx.send(embed=embed, file=disnake.File('errors_for_counting.png'))
 
     @commands.command(name="plot")
     async def plotting_errors(self, ctx):

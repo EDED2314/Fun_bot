@@ -1,9 +1,7 @@
-import discord
-from discord.ext import commands
+import disnake
+from disnake.ext import commands
 import textwrap
 import math
-import asyncio
-
 
 class Math(commands.Cog):
     def __init__(self, bot):
@@ -25,7 +23,7 @@ class Math(commands.Cog):
          await ctx.send("😒 bruh send something smaller")
         elif isinstance(error, commands.MissingRequiredArgument):
             description = self.description
-            embed = discord.Embed(title="**Math commands panel**📝", description=description)
+            embed = disnake.Embed(title="**Math commands panel**📝", description=description)
             await ctx.send(embed=embed)
         else:
             await ctx.send('An error occurred: {}'.format(str(error)))
@@ -45,7 +43,7 @@ class Math(commands.Cog):
                 raise OverflowError
             try:
                 number = self.chosing_and_permutations.permutate(n, r)
-                await ctx.send(embed=discord.Embed(title=f"**The permutation of the two numbers is {number:,.2f}**".format(number=number)))
+                await ctx.send(embed=disnake.Embed(title=f"**The permutation of the two numbers is {number:,.2f}**".format(number=number)))
             except TypeError:
                 await ctx.send("**The calculator right now only supports integer values for permutations/combinations, sorry!**")
 
@@ -57,7 +55,7 @@ class Math(commands.Cog):
                 try:
                     result = got_nums[0] * ((1 + got_nums[2] / self.n) ** (self.n * got_nums[1]))
                     author = ctx.author.name
-                    await ctx.send(embed=discord.Embed(
+                    await ctx.send(embed=disnake.Embed(
                         title=f"**{author}'s results with these numbers: {result:,.2f}.**".format(result=result,
                                                                                                   author=ctx.author.name),
                         description=got_nums[3]))
@@ -79,7 +77,7 @@ class Math(commands.Cog):
         # string = "formula is A = P(1+r/n)^nt"
         description = "Please enter numbers as following:" \
                       "[Starting price] [time yrs] [rate %] (compound)"
-        embed = discord.Embed(title="**Compound Intrest Calculator**", description=description)
+        embed = disnake.Embed(title="**Compound Intrest Calculator**", description=description)
         await ctx.send(embed=embed)
         msg = await bot.wait_for('message', check=lambda message: message.author == ctx.author,
                                  timeout=600)
@@ -100,7 +98,7 @@ class Math(commands.Cog):
             > Rate: {msg_content[2]} %
             > Compound: Annually (once a year)
             """)
-        embed = discord.Embed(title="Alright I have these numbers is it correct? (y/n):", description=nums_got)
+        embed = disnake.Embed(title="Alright I have these numbers is it correct? (y/n):", description=nums_got)
         await ctx.send(embed=embed)
         msg = await bot.wait_for('message', check=lambda message: message.author == ctx.author,
                                  timeout=600)
@@ -123,11 +121,11 @@ class Math(commands.Cog):
     @staticmethod
     async def double_input_embed(ctx, bot, mode):
         if mode == "gcd":
-            embed = discord.Embed(title="**Greatest common factor/divsor calculator**",
+            embed = disnake.Embed(title="**Greatest common factor/divsor calculator**",
                                   description="Please enter number 1 and number 2 below like such: num1 num2")
             await ctx.send(embed=embed)
         if mode == "permute":
-            embed = discord.Embed(title="**Permutation Calculator**",
+            embed = disnake.Embed(title="**Permutation Calculator**",
                                   description="Please enter n and r below like such: n r")
             await ctx.send(embed=embed)
         msg = await bot.wait_for('message', check=lambda message: message.author == ctx.author,
@@ -145,11 +143,11 @@ class Math(commands.Cog):
         try:
             nums = (int(number1), int(number2))
         except ValueError:
-            await ctx.send(embed=discord.Embed(title="**Enter a number please!**"))
+            await ctx.send(embed=disnake.Embed(title="**Enter a number please!**"))
             return
 
         gcd = await self.e_form(nums[0], nums[1])
-        await ctx.send(embed=discord.Embed(title=f"**The gcd of the two numbers is {gcd}**"))
+        await ctx.send(embed=disnake.Embed(title=f"**The gcd of the two numbers is {gcd}**"))
 
     async def e_form(self, num1: int, num2: int):
         maxn = max(num1, num2)

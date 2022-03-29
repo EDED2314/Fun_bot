@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import disnake
+from disnake.ext import commands
 import random
 import textwrap
 
@@ -145,7 +145,7 @@ class WordleGame():
             return f"😭 {ctx.author.mention} **YoU SuCk** The word was *{self.word}* 😒"
 
     async def wordle_embed(self, grid: str, ctx):
-        embed = discord.Embed(title=f"**{ctx.author.name}'s Wordle Game!**", color=discord.Colour.random(),
+        embed = disnake.Embed(title=f"**{ctx.author.name}'s Wordle Game!**", color=disnake.Colour.random(),
                               description=grid)
         embed.set_footer(text="Use `f.wordle rules` to see the hints")
         correct_string = "|"
@@ -170,7 +170,7 @@ class WordleGame():
 
     @staticmethod
     async def start_embed(ctx: commands.context.Context):
-        embed = discord.Embed(title=f"**{ctx.author.name}'s Wordle Game!**", color=discord.Colour.random(),
+        embed = disnake.Embed(title=f"**{ctx.author.name}'s Wordle Game!**", color=disnake.Colour.random(),
                               description="Type a 5 letter word to begin!")
         embed.set_footer(text="Use `f.wordle rules` to see the hints")
         return embed
@@ -183,7 +183,7 @@ class Wordle(commands.Cog):
     @staticmethod
     async def help_embed():
         prefix = "f."
-        embed = discord.Embed(title="**Eddie's Wordle Game Help Panel**")
+        embed = disnake.Embed(title="**Eddie's Wordle Game Help Panel**")
         description = textwrap.dedent(f"""
         `{prefix}wordle` help - help panel
         `{prefix}wordle` rules - sends the rules and instructions on how to play
@@ -195,7 +195,7 @@ class Wordle(commands.Cog):
 
     @staticmethod
     async def rules_embed():
-        embed = discord.Embed(title="**Eddie's Wordle Game Rules Panel**")
+        embed = disnake.Embed(title="**Eddie's Wordle Game Rules Panel**")
         description = textwrap.dedent(f"""
         > Letter  means that it is **not in the word**
         > **Letter**  means that it is in the word and **in** the correct place

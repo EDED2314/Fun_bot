@@ -98,6 +98,7 @@ from bot import Info
 from bot import Counting
 from bot import image_handler
 from bot import Scrapper
+from bot import Testing
 
 bot = FunBot()
 if __name__ == '__main__':
@@ -108,7 +109,8 @@ if __name__ == '__main__':
     bot.add_cog(Wordle(bot))
     # bot.add_cog(Music(bot))
     bot.add_cog(Counting(bot))
-    # bot.add_cog(TicTacToe(bot))
+    bot.add_cog(TicTacToe(bot))
     bot.add_cog(Scrapper(bot))
     bot.add_cog(image_handler(bot))
-    bot.run(os.getenv("TOKEN"), bot=bot)
+    bot.add_cog(Testing(bot))
+    bot.run(os.getenv("TOKEN"))
