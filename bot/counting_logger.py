@@ -204,6 +204,8 @@ class Counting(commands.Cog):
     async def on_message(self, message: disnake.Message):
         if message.author == self.bot.user:
             return
+        if message is None:
+            return
         try:
             with open(f"txt_files/counting_channels.txt", "r") as f:
                 f.seek(0)

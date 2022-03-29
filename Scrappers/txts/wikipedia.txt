@@ -1,0 +1,159 @@
+**SCHIST**
+Schist (/ˈʃɪst/ SHIST) is a medium-grained metamorphic rock showing pronounced schistosity. This means that the rock is composed of mineral grains easily seen with a low-power hand lens, oriented in such a way that the rock is easily split into thin flakes or plates. This texture reflects a high content of platy minerals, such as micas, talc, chlorite, or graphite. These are often interleaved with more granular minerals, such as feldspar or quartz.
+
+Schist typically forms during regional metamorphism accompanying the process of mountain building (orogeny) and usually reflects a medium grade of metamorphism. Schist can form from many different kinds of rocks, including sedimentary rocks such as mudstones and igneous rocks such as tuffs. Schist metamorphosed from mudstone is particularly common and is often very rich in mica (a mica schist). Where the type of the original rock (the protolith) is discernible, the schist is usually given a name reflecting its protolith, such as schistose metasandstone. Otherwise, the names of the constituent minerals will be included in the rock name, such as quartz-felspar-biotite schist.
+
+Schist bedrock can pose a challenge for civil engineering because of its pronounced planes of weakness.
+
+**Contents**
+> 1 Etymology
+
+> 2 Definition
+
+2.1 Historical mining terminology
+
+
+
+> 3 Formation
+
+> 4 Engineering considerations
+
+> 5 See also
+
+> 6 References
+
+> 7 External links
+
+> 2.1 Historical mining terminology
+
+**Etymology**
+The word schist is derived ultimately from the Greek word σχίζειν (schízein), meaning "to split",[1] which refers to the ease with which schists can be split along the plane in which the platy minerals lie.
+
+**Definition**
+Geologists define schist as medium-grained metamorphic rock that shows well-developed schistosity.[2] Schistosity is a thin layering of the rock produced by metamorphism (a foliation) that permits the rock to easily be split into flakes or slabs less than 5 to 10 millimeters (0.2 to 0.4 in) thick.[3][4]   The mineral grains in a schist are typically from 0.25 to 2 millimeters (0.01 to 0.08 in) in size[5] and so are easily seen with a 10× hand lens.[6] Typically, over half the mineral grains in a schist show a preferred orientation. Schists make up one of the three divisions of metamorphic rock by texture, with the other two divisions being gneiss, which has poorly developed schistosity and thicker layering, and granofels, which has no discernible schistosity.[3][7]
+
+Schists are defined by their texture, without reference to their composition,[8][3]  and while most are a result of medium-grade metamorphism, they can vary greatly in mineral makeup.[9] However, schistosity normally develops only when the rock contains abundant platy minerals, such as micas or chlorite. Grains of these minerals are strongly oriented in a preferred direction in schist, often also forming very thin parallel layers. The ease with which the rock splits along the aligned grains accounts for the schistosity.[3] Though not a defining characteristic, schists very often contain porphyroblasts (individual crystals of unusual size) of distinctive minerals, such as garnet, staurolite, kyanite, sillimanite, or cordierite.[10]
+
+
+Because schists are a very large class of metamorphic rock, geologists will formally describe a rock as a schist only when the original type of the rock prior to metamorphism (the protolith) is unknown and its mineral content is not yet determined. Otherwise, the modifier schistose will be applied to a more precise type name, such as schistose semipelite (when the rock is known to contain moderate amounts of mica) or a schistose metasandstone (if the protolith is known to have been a sandstone).[11] If all that is known is that the protolith was a sedimentary rock, the schist will be described as a paraschist, while if the protolith was an igneous rock, the schist will be described as an orthoschist.[12] Mineral qualifiers are important when naming a schist. For example, a quartz-feldspar-biotite schist is a schist of uncertain protolith that contains biotite mica, feldspar, and quartz in order of apparent decreasing abundance.[13]
+
+Lineated schist has a strong linear fabric in a rock which otherwise has well-developed schistosity.[9]
+
+_**Historical mining terminology**_
+Before the mid-19th century, the terms slate, shale and schist  were not sharply differentiated by those involved with mining.[14]
+
+**Formation**
+Schistosity is developed at elevated temperature when the rock is more strongly compressed in one direction than in other directions (nonhydrostatic stress). Nonhydrostatic stress is characteristic of regional metamorphism where mountain building is taking place (an orogenic belt). The schistosity develops perpendicular to the direction of greatest compression, also called the shortening direction, as platy minerals are rotated or recrystallized into parallel layers.[15] While platy or elongated minerals are most obviously reoriented, even quartz or calcite may take up preferred orientations.[16]
+
+At the microscopic level, schistosity is divided into internal schistosity, in which inclusions within porphyroblasts take a preferred orientation, and external schistosity, which is the orientation of grains in the surrounding medium-grained rock.[17]
+
+The composition of the rock must permit formation of abundant platy minerals. For example, the clay minerals in mudstone are metamorphosed to mica, producing a mica schist.[18] Early stages of metamorphism convert mudstone to a very fine-grained metamorphic rock called slate, which with further metamorphism becomes fine-grained phyllite. Further recrystallization produces medium-grained mica schist. If the metamorphism proceeds further, the mica schist experiences dehydration reactions that convert platy minerals to granular minerals such as feldspars, decreasing schistosity and turning the rock into a gneiss.[10]
+
+Other platy minerals found in schists include chlorite, talc, and graphite. Chlorite schist is typically formed by metamorphism of ultramafic igneous rocks,[19][20] as is talc schist.[21] Talc schist also forms from metamorphosis of talc-bearing carbonate rocks formed by hydrothermal alteration.[22] Graphite schist is uncommon, but can form from metamorphosis of sedimentary beds containing abundant organic carbon.[23] This may be of algal origin.[24]
+
+Metamorphosis of felsic volcanic rock, such as tuff, can produce quartz-muscovite schist.[25]
+
+> 
+
+
+Microscopic view of garnet-mica-schist in thin section under polarized light with a large garnet crystal (black) in a matrix of quartz and feldspar (white and gray grains) and parallel strands of mica (red, purple and brown).
+
+
+
+
+> 
+
+
+View of cut garnet-mica-schist
+
+
+
+
+> 
+
+
+Manhattan schist from southeastern New York State
+
+
+
+
+> 
+
+
+Manhattan schist outcropping in New York City's Central Park
+
+
+
+
+> 
+
+
+Talc-scist from Saint-Marcel, France
+
+
+
+
+Microscopic view of garnet-mica-schist in thin section under polarized light with a large garnet crystal (black) in a matrix of quartz and feldspar (white and gray grains) and parallel strands of mica (red, purple and brown).
+
+View of cut garnet-mica-schist
+
+Manhattan schist from southeastern New York State
+
+Manhattan schist outcropping in New York City's Central Park
+
+Talc-scist from Saint-Marcel, France
+
+**Engineering considerations**
+In geotechnical engineering a schistosity plane often forms a discontinuity that may have a large influence on the mechanical behavior (strength, deformation, etc.) of rock masses in, for example, tunnel, foundation, or slope construction.[26] A hazard may exist even in undisturbed terrain. On August 17, 1959, a magnitude 7.2 earthquake destabilized a mountain slope near Hebgen Lake, Montana, composed of schist. This caused a massive landslide that killed 26 people camping in the area.[27]
+
+**See also**
+> Blueschist – Metavolcanic rock that forms by the metamorphism of basalt and rocks with similar composition
+
+> Greenschist – Metamorphic rocks
+
+> List of rock textures – List of rock textural and morphological terms
+
+> Pelite
+
+> Whiteschist
+
+**References**
+**External links**
+> Samuels, Andrea (November 2008). "An Examination of Mica Schist". Micscape magazine. Photographs of Manhattan schist.
+
+> "Geologic units containing Schist". U.S. Geological Survey.
+
+> v
+
+> t
+
+> e
+
+> Ultra-high-pressure metamorphism
+
+> Ultra-high-temperature metamorphism
+
+> Metamorphic rock
+
+> Amphibolite
+
+> Anatexis
+
+> Augen
+
+> Schist
+
+> Dynamic quartz recrystallization
+
+> Foliation (geology)
+
+> Category
+
+> Portal
+
+> Israel
+
+> United States
+
+> Japan
+

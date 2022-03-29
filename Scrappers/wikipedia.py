@@ -1,41 +1,11 @@
-from requests_html import AsyncHTMLSession
-import asyncio
-import time
-
-'''
-urls = []
-for x in range(1,50):
-    urls.append(f"http://books.toscrape.com/catalogue/page-{x}.html")
-
-async def work(s, url):
-    r = await s.get(url)
-    products = []
-    desc = r.html.find('article.product_pod')
-    for item in desc:
-        product = {
-            'title': item.find('h3 a[title]', first=True).text,
-            'price': item.find('p.price_color', first=True).text
-        }
-        products.append(product)
-    return products
-
-async def main(urls):
-    s = AsyncHTMLSession()
-    tasks = (work(s, url) for url in urls)
-    x = await asyncio.gather(*tasks)
-    return x
-
-results = asyncio.run(main(urls))
-print(results)
-'''
+import aiohttp
+from bs4 import BeautifulSoup
 
 
-# noinspection PyTypeChecker
 class Wikipedia:
     def __init__(self):
         self.string_splitting = []
-        self.header2s = []
-        self.header3s = []
+        self.length = 0
 
     async def split_until_less_2000(self, string1: str, string2: str = None):
         if string2 is None:
@@ -64,116 +34,60 @@ class Wikipedia:
             if len(string2) <= 2000:
                 self.string_splitting.append(string2)
 
-    async def get_page(self, url):
-        results = await self.run_thingy(url)
-        # print(results)
-        for idx, val in enumerate(results[0]):
+    async def get_pagee(self, url: str):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                result = []
+                html = await response.text()
+                soup = BeautifulSoup(html, 'html.parser')
+                header = soup.find("h1", class_="firstHeading mw-first-heading")
+                result.append(f"**{str(header.text).upper()}**")
+                content = soup.find("div", class_="mw-parser-output")
+                try:
+                    content_children = content.findChildren()
+                except AttributeError:
+                    return "No article"
+
+                for content_child in content_children:
+                    if content_child.name == "h2" or content_child.name == "p" or content_child.name == "h3" or content_child.name == "ul":
+                        if content_child.text != "\n":
+                            if content_child.name == "h2":
+                                resultt = str(content_child.text)
+                                if resultt.endswith("[edit]"):
+                                    resultt = resultt.replace("[edit]", "")
+                                result.append(f"**{resultt}**")
+
+                            elif content_child.name == "h3":
+                                resultt = str(content_child.text)
+                                if resultt.endswith("[edit]"):
+                                    resultt = resultt.replace("[edit]", "")
+                                result.append(f"_**{resultt}**_")
+
+                            elif content_child.name == "p":
+                                result.append(content_child.text)
+
+                            elif content_child.name == "ul":
+                                children = content_child.findChildren("li", recursive=False)
+                                for child in children:
+                                    result.append(f"> {child.text}\n")
+
+                copy_result = []
+                with open("Scrappers/txts/wikipedia.txt", "w", encoding="utf-8") as f:
+                    for item in result:
+                        copy_result.append(f"{item}\n")
+                    f.writelines(copy_result)
+
+                return result
+
+
+
+
+    async def get_page(self, url: str):
+        results = await self.get_pagee(url)
+        if results == "No article":
+            return [f"**{results} found** 😢"]
+        for idx, val in enumerate(results):
             await self.split_until_less_2000(val)
-        # print(self.string_splitting)
         return self.string_splitting
 
-    async def work(self, s, url):
-        r = await s.get(url)
-        textt = ""
-        desc = []
-        for item in r.html.find('div.mw-body'):
-            x = str(item.find('h1')[0].text)
-            desc.append(f"**{x.upper()}**")
-        for idx, item in enumerate(r.html.find('div.mw-parser-output')):
-            print(item.text[:4000])
-            paragraphs = item.find('p')
-            # paragprahs is a list
-            a = item.find('a')
 
-            self.header2s = []
-            self.header3s = []
-
-            header2s = item.find('h2')
-            header3s = item.find('h3')
-            for itemh2 in header2s:
-                self.header2s.append(itemh2.text)
-
-            for itemh3 in header3s:
-                self.header3s.append(itemh3.text)
-
-            header2s = self.header2s
-            header3s = self.header3s
-
-
-
-            for idxx, val in enumerate(paragraphs):
-                if len(val.text) != 0:
-                    desc.append(val.text)
-                    '''
-                    big_textt = str(item.text)
-                    big_text_array = big_textt.split("\n")
-                    shortened_big_text_array = []
-
-                    # print(big_text_array)
-
-                    for paragraph in big_text_array:
-                        # print(len(paragraph))
-                        if len(paragraph) < 20:
-                            shortened_big_text_array.append(paragraph)
-
-                    # print(shortened_big_text_array)
-
-                    for itemmm in shortened_big_text_array:
-                        for item2 in header2s:
-                            if str(itemmm) == str(item2):
-                                desc.append(f"**{itemmm}**")
-                                header2s.remove(itemmm)
-                                shortened_big_text_array.remove(itemmm)
-                                break
-                        for item3 in header3s:
-                            if itemmm == str(item3):
-                                # header 3??
-                                desc.append(f"_**{itemmm}**_")
-                                header3s.remove(itemmm)
-                                shortened_big_text_array.remove(itemmm)
-                                break
-
-                    desc.append(val.text)
-
-                if len(val.text) != 0:
-                    if val.text in item.text:
-                        big_text = str(item.text)
-                        index = big_text.index(val.text)
-                        print(index)
-                        new_space_count = 0
-                        current_indx = index
-                        while 0 <= new_space_count < 2:
-                            current_indx -= 1
-                            if big_text[current_indx] == "\n":
-                                new_space_count += 1
-
-                        print(big_text[current_indx])
-                        first_letter = current_indx
-
-                        new_space_count = 0
-                        random_str = ""
-                        while new_space_count != 1:
-                            first_letter += 1
-                            random_str += str(big_text[first_letter])
-                            if big_text[first_letter] == "\n":
-                                new_space_count += 1
-                        print(random_str)
-                        for item2 in header2s:
-                            if random_str == str(item2):
-                                # header 2???
-                                desc.append(f"**{random_str}**")
-                        for item3 in header3s:
-                            if random_str == str(item3):
-                                # header 3??
-                                desc.append(f"_**{random_str}**_")
-                    '''
-                # e
-
-        # print(desc)
-        return desc
-
-    async def run_thingy(self, url):
-        s = AsyncHTMLSession()
-        tasks = (self.work(s, url))
-        x = await asyncio.gather(tasks)
-        return x
