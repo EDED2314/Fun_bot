@@ -13,6 +13,7 @@ class Info(commands.Cog):
         description = textwrap.dedent(f"""
         **Fun Stuff**
         `{prefix}help` - this help command
+        `{prefix}tic` [user by @ing them] - tictactoe
         `{prefix}pvc` - private vc with interface
         `{prefix}u` [user by @ing them] - userinfo 
         `{prefix}wordle` - wordle
@@ -28,7 +29,7 @@ class Info(commands.Cog):
         `{prefix}plot` - plots who got the errors lol
         `{prefix}log_first_bits` - logs first bits of data
         **Photos**
-        `{prefix}photopanel` - a gui to blur and sharpen images 📷
+        `{prefix}photopanel` [photo attached] - a gui to blur and sharpen images 📷
          **My stuff**
          `{prefix}shutdown` - a command only executable by the person himself - eddie
         """)

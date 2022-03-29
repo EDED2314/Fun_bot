@@ -83,9 +83,11 @@ class Wikipedia:
             print(item.text[:4000])
             paragraphs = item.find('p')
             # paragprahs is a list
+            a = item.find('a')
 
             self.header2s = []
             self.header3s = []
+
             header2s = item.find('h2')
             header3s = item.find('h3')
             for itemh2 in header2s:
@@ -97,8 +99,12 @@ class Wikipedia:
             header2s = self.header2s
             header3s = self.header3s
 
+
+
             for idxx, val in enumerate(paragraphs):
                 if len(val.text) != 0:
+                    desc.append(val.text)
+                    '''
                     big_textt = str(item.text)
                     big_text_array = big_textt.split("\n")
                     shortened_big_text_array = []
@@ -128,7 +134,7 @@ class Wikipedia:
                                 break
 
                     desc.append(val.text)
-                '''
+
                 if len(val.text) != 0:
                     if val.text in item.text:
                         big_text = str(item.text)
