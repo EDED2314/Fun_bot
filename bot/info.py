@@ -17,6 +17,8 @@ class Info(commands.Cog):
         `{prefix}pvc` - private vc with interface
         `{prefix}u` [user by @ing them] - userinfo 
         `{prefix}wordle` - wordle
+        **Search**
+        `{prefix}wiki [link or search]` - searches wikipedia 
         **Teachers**
         `{prefix}lee` - lee picture 😳
         `{prefix}lee test` - shows ur test grade from Mr.Lee
